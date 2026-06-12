@@ -66,11 +66,11 @@ export default function Navbar({ onEnrollClick }) {
         >
           {/* Logo image */}
           <img
-            src="/final.png"
-            alt="Innoworq Academy Logo"
+            src="/emark-logo.png"
+            alt="Emark Academy Logo"
             style={{
-              width: "80px",
-              height: "80px",
+              width: "40px",
+              height: "40px",
               objectFit: "contain",
               display: "block",
             }}
@@ -78,18 +78,17 @@ export default function Navbar({ onEnrollClick }) {
           {/* Text — hidden on mobile via CSS */}
           <span
             className="navbar-brand-text"
-            style={{
-              fontFamily: "'Poppins', sans-serif",
-              fontWeight: 700,
-              fontSize: "20px",
-              letterSpacing: "-0.5px",
-              display: "flex",
-              marginTop: "10px",
-              alignItems: "center",
-              marginLeft: "-15px",
-            }}
+              style={{
+                fontFamily: "'Poppins', sans-serif",
+                fontWeight: 700,
+                fontSize: "20px",
+                letterSpacing: "-0.5px",
+                display: "flex",
+                alignItems: "center",
+                marginLeft: "12px",
+              }}
           >
-            <span style={{ color: "#ffffff" }}>Innoworq</span>
+            <span style={{ color: "#ffffff" }}>Emark&nbsp;</span>
             <span
               style={{
                 background: "linear-gradient(135deg, #FF8C00, #E8291C)",

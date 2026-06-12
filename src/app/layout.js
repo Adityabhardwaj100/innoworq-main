@@ -15,16 +15,16 @@ const poppins = Poppins({
 });
 
 export const metadata = {
-  title: "Innoworq Academy | AI Generalist Professional Certification",
+  title: "Emark Academy | AI Generalist Professional Certification",
   description:
-    "Master AI tools, LLMs, prompt engineering, and automation in just 20 hours. Earn an industry-recognized AI Generalist Professional Certificate with Innoworq Academy.",
+    "Master AI tools, LLMs, prompt engineering, and automation in just 20 hours. Earn an industry-recognized AI Generalist Professional Certificate with Emark Academy.",
   keywords:
     "AI certification, AI tools, LLM training, prompt engineering, automation, AI courses India",
   icons: {
-    icon: "/final.png",
+    icon: "/emark-logo.png",
   },
   openGraph: {
-    title: "Innoworq Academy | AI Generalist Professional Certification",
+    title: "Emark Academy | AI Generalist Professional Certification",
     description:
       "Master AI tools, LLMs, prompt engineering, and automation in just 20 hours.",
     type: "website",

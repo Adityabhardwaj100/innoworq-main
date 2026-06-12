@@ -35,28 +35,25 @@ export default function Footer() {
               }}
             >
               <img
-                src="/final.png"
-                alt="Innoworq Academy Logo"
+                src="/emark-logo.png"
+                alt="Emark Academy Logo"
                 style={{
-                  width: "70px",
-                  height: "70px",
-                  borderRadius: "12px",
+                  width: "36px",
+                  height: "36px",
                   objectFit: "contain",
-
                 }}
               />
               <span
                 style={{
                   fontFamily: "'Poppins', sans-serif",
                   fontWeight: 700,
-                  fontSize: "17px",
+                  fontSize: "22px",
                   color: "white",
-                  marginTop: "10px",
-                  marginLeft: "-15px",
                   letterSpacing: "-0.3px",
+                  marginLeft: "12px",
                 }}
               >
-                Innoworq <span style={{ background: "linear-gradient(135deg, #FF8C00, #E8291C)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>Academy</span>
+                Emark <span style={{ background: "linear-gradient(135deg, #FF8C00, #E8291C)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>Academy</span>
               </span>
             </a>
 
@@ -74,7 +71,7 @@ export default function Footer() {
 
             {/* Contact */}
             <a
-              href="mailto:contact@innoworqacademy.com"
+              href="mailto:contact@emarkacademy.com"
               style={{
                 display: "inline-flex",
                 alignItems: "center",
@@ -92,7 +89,7 @@ export default function Footer() {
                 <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
                 <polyline points="22,6 12,13 2,6" />
               </svg>
-              contact@innoworqacademy.com
+              contact@emarkacademy.com
             </a>
           </div>
 
@@ -154,8 +151,8 @@ export default function Footer() {
             <ul style={{ listStyle: "none", display: "flex", flexDirection: "column", gap: "12px" }}>
               {[
                 { label: "FAQ", href: "#faq" },
-                { label: "Contact Us", href: "mailto:contact@innoworqacademy.com" },
-                { label: "Partner With Us", href: "mailto:contact@innoworqacademy.com" },
+                { label: "Contact Us", href: "mailto:contact@emarkacademy.com" },
+                { label: "Partner With Us", href: "mailto:contact@emarkacademy.com" },
               ].map((l) => (
                 <li key={l.label}>
                   <a
@@ -198,7 +195,7 @@ export default function Footer() {
           }}
         >
           <p style={{ fontSize: "13px", color: "#475569" }}>
-            © 2026 Innoworq Academy. All rights reserved.
+            © 2026 Emark Academy. All rights reserved.
           </p>
           <div style={{ display: "flex", gap: "24px" }}>
             {["Privacy Policy", "Terms of Service"].map((l) => (

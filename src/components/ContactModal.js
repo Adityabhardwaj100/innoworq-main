@@ -129,7 +129,7 @@ export default function ContactModal({ isOpen, onClose, type = null, onSuccess }
         key: process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID,
         amount: orderData.amount,
         currency: orderData.currency,
-        name: "Innoworq Academy",
+        name: "Emark Academy",
         description: enrollType === 'workshop' ? "AI Workshop Registration" : "AI Generalist Certification",
         order_id: orderData.order_id,
         handler: async function (response) {

@@ -17,7 +17,7 @@ const faqs = [
   },
   {
     question: "Is there a certificate provided?",
-    answer: "Yes. Upon successful completion of your capstone project, you will receive the 'AI Generalist' Professional Certificate from Innoworq Academy, which you can add directly to your LinkedIn and resume."
+    answer: "Yes. Upon successful completion of your capstone project, you will receive the 'AI Generalist' Professional Certificate from Emark Academy, which you can add directly to your LinkedIn and resume."
   },
   {
     question: "What happens if I miss a live class?",
