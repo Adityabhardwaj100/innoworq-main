@@ -65,15 +65,7 @@ function InputField({ label, id, type = "text", placeholder, value, onChange, re
   );
 }
 
-const loadRazorpayScript = () => {
-  return new Promise((resolve) => {
-    const script = document.createElement("script");
-    script.src = "https://checkout.razorpay.com/v1/checkout.js";
-    script.onload = () => resolve(true);
-    script.onerror = () => resolve(false);
-    document.body.appendChild(script);
-  });
-};
+
 
 export default function ContactModal({ isOpen, onClose, type = null, onSuccess }) {
   const [enrollType, setEnrollType] = useState(type || "course");
@@ -104,96 +96,36 @@ export default function ContactModal({ isOpen, onClose, type = null, onSuccess }
     setError("");
 
     try {
-      const res = await loadRazorpayScript();
-      if (!res) {
-        setError("Razorpay SDK failed to load. Are you online?");
-        setSubmitting(false);
-        return;
-      }
-
-      const orderResponse = await fetch("/api/create-order", {
+      const verifyResponse = await fetch("/api/submit-enrollment", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ enrollType }),
+        body: JSON.stringify({
+          formDetails: { ...form, enrollType }
+        }),
       });
 
-      const orderData = await orderResponse.json();
+      const verifyData = await verifyResponse.json();
 
-      if (!orderResponse.ok) {
-        setError(orderData.error || "Failed to create order. Please try again.");
-        setSubmitting(false);
-        return;
+      if (verifyResponse.ok) {
+        setSubmitted(true);
+        if (onSuccess) onSuccess();
+        
+        // Auto-redirect to WhatsApp
+        const waText = enrollType === 'workshop' 
+          ? "Hi, I just enrolled for the AI Workshop. Please share the details."
+          : "Hi, I just enrolled for the AI Generalist Certification. Please share the details.";
+        const waUrl = `https://wa.me/919211633068?text=${encodeURIComponent(waText)}`;
+        
+        setTimeout(() => {
+          window.location.href = waUrl;
+        }, 1500);
+      } else {
+        setError(verifyData.error || "Enrollment failed.");
       }
-
-      const options = {
-        key: process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID,
-        amount: orderData.amount,
-        currency: orderData.currency,
-        name: "Emark Academy",
-        description: enrollType === 'workshop' ? "AI Workshop Registration" : "AI Generalist Certification",
-        order_id: orderData.order_id,
-        handler: async function (response) {
-          try {
-            const verifyResponse = await fetch("/api/verify-payment", {
-              method: "POST",
-              headers: { "Content-Type": "application/json" },
-              body: JSON.stringify({
-                razorpay_order_id: response.razorpay_order_id,
-                razorpay_payment_id: response.razorpay_payment_id,
-                razorpay_signature: response.razorpay_signature,
-                formDetails: { ...form, enrollType }
-              }),
-            });
-
-            const verifyData = await verifyResponse.json();
-
-            if (verifyResponse.ok) {
-              setSubmitted(true);
-              if (onSuccess) onSuccess();
-              
-              // Auto-redirect to WhatsApp
-              const waText = enrollType === 'workshop' 
-                ? "Hi, I just enrolled for the AI Workshop. Please share the details."
-                : "Hi, I just enrolled for the AI Generalist Certification. Please share the details.";
-              const waUrl = `https://wa.me/919211633068?text=${encodeURIComponent(waText)}`;
-              
-              setTimeout(() => {
-                window.location.href = waUrl;
-              }, 1500);
-            } else {
-              setError(verifyData.error || "Payment verification failed.");
-            }
-          } catch (err) {
-            console.error("Verification error:", err);
-            setError("Network error during verification.");
-          } finally {
-            setSubmitting(false);
-          }
-        },
-        prefill: {
-          name: form.name,
-          email: form.email,
-          contact: form.phone,
-        },
-        theme: {
-          color: "#FF8C00",
-        },
-        modal: {
-          ondismiss: function() {
-            setSubmitting(false);
-          }
-        }
-      };
-
-      const rzp1 = new window.Razorpay(options);
-      rzp1.on('payment.failed', function (response){
-        setError("Payment failed: " + response.error.description);
-        setSubmitting(false);
-      });
-      rzp1.open();
     } catch (err) {
       console.error("Submission error:", err);
-      setError("Network error. Please check your connection.");
+      setError("Network error during submission.");
+    } finally {
       setSubmitting(false);
     }
   };
@@ -528,7 +460,7 @@ export default function ContactModal({ isOpen, onClose, type = null, onSuccess }
                                 Submitting...
                               </>
                             ) : (
-                              `Pay ${enrollType === 'course' ? '₹25,000' : '₹1'} →`
+                              `Enroll Now →`
                             )}
                           </motion.button>
                         </motion.form>
