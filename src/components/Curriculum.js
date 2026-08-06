@@ -20,7 +20,7 @@ const modules = [
   },
   {
     number: "03",
-    title: "Foundations of LLMs, RAG & MCP",
+    title: "AI for Entrepreneurs",
     duration: "2 hours",
     description: "Dive into Large Language Models, Retrieval-Augmented Generation, and the Model Context Protocol.",
     topics: ["LLM Architecture", "RAG", "MCP Protocol"],

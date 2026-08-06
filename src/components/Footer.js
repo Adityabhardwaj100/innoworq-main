@@ -71,7 +71,7 @@ export default function Footer() {
 
             {/* Contact */}
             <a
-              href="mailto:contact@emarkacademy.com"
+              href="mailto:aditya@emark.agency"
               style={{
                 display: "inline-flex",
                 alignItems: "center",
@@ -89,7 +89,7 @@ export default function Footer() {
                 <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
                 <polyline points="22,6 12,13 2,6" />
               </svg>
-              contact@emarkacademy.com
+              aditya@emark.agency
             </a>
           </div>
 
@@ -151,8 +151,8 @@ export default function Footer() {
             <ul style={{ listStyle: "none", display: "flex", flexDirection: "column", gap: "12px" }}>
               {[
                 { label: "FAQ", href: "#faq" },
-                { label: "Contact Us", href: "mailto:contact@emarkacademy.com" },
-                { label: "Partner With Us", href: "mailto:contact@emarkacademy.com" },
+                { label: "Contact Us", href: "mailto:aditya@emark.agency" },
+                { label: "Partner With Us", href: "mailto:aditya@emark.agency" },
               ].map((l) => (
                 <li key={l.label}>
                   <a
